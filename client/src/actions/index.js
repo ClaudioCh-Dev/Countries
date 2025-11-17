@@ -9,7 +9,6 @@ export function getcountries(nombrePais,pagina){
     return fetch (getData)
       .then(res => res.json())
       .then(json =>{
-          console.log(json);
           dispatch({type: "GET_COUNTRIES", payload: {countries:json,searchName:nombrePais,page:pagina,cargado:true}})
       }).catch({type: "PUT_LOADING", payload: {cargado:false}});    
     }
