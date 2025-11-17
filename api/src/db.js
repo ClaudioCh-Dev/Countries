@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, NODE_ENV
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, NODE_ENV,CA_CERT
 } = process.env;
 
 const isProduction = NODE_ENV === "production";
@@ -17,7 +17,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     ? {
         ssl: {
           require: true,
-          ca: process.env.CA_CERT,
+          ca: CA_CERT,
         }
       }
     : {}
