@@ -3,8 +3,10 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT, NODE_ENV
 } = process.env;
+
+const isProduction = NODE_ENV === "production";
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
@@ -20,6 +22,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
       }
     : {}
 });
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
